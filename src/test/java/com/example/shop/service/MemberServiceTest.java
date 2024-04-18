@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 
@@ -45,5 +46,29 @@ class MemberServiceTest {
         assertEquals(member.getPassword(),savedMember.getPassword());
         assertEquals(member.getRole(),savedMember.getRole());
     }
+
+    @Test
+    @DisplayName("중복 회원 가입 테스트")
+    public void saveDuplicateMemberTest(){
+        Member member1 = createMember();
+        Member member2 = createMember();
+        memberService.saveMember(member1);
+
+        Throwable e = assertThrows(IllegalStateException.class,()->{
+            memberService.saveMember(member2);
+        });
+        assertEquals("이미 가입된 회원입니다",e.getMessage());
+
+    }
+
+    @Test
+    @DisplayName("암호화 테스트")
+    public void test(){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String securePw = encoder.encode("3b61211c-dc1b-478e-90b7-947f47c7233e");
+        System.out.println(securePw);
+    }
+
+
 
 }
