@@ -3,6 +3,8 @@ package com.example.shop.entity;
 
 import java.time.LocalDateTime;
 
+import com.example.shop.repository.MemberRepository;
+import com.example.shop.repository.OrderItemRepository;
 import org.aspectj.weaver.ast.Or;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,6 +31,12 @@ class OrderTest {
 
 	@Autowired
 	ItemRepository itemRepository;
+
+	@Autowired
+	MemberRepository memberRepository;
+
+	@Autowired
+	OrderItemRepository orderItemRepository;
 
 	@PersistenceContext
 	EntityManager em;
@@ -67,7 +75,41 @@ class OrderTest {
 		Order savedOrder = orderRepository.findById(order.getId())
 							.orElseThrow(EntityNotFoundException::new);
 		assertEquals(3,savedOrder.getOrderItems().size());
+	}
+
+	public Order createOrder(){
+		Order order = new Order();
+		for(int i=0;i<3;i++){
+			Item item = creatItem();
+			itemRepository.save(item);
+			OrderItem orderItem = new OrderItem();
+			orderItem.setItem(item);
+			orderItem.setCount(10);
+			orderItem.setOrderPrice(1000);
+			orderItem.setOrder(order);
+			order.getOrderItems().add(orderItem);
+		}
+		Member member = new Member();
+		memberRepository.save(member);
+		order.setMember(member);
+		orderRepository.save(order);
+		return order;
+	}
 
 
+	@Test
+	@DisplayName("지연 로딩 테스트")
+	public void lazyLoadingTest(){
+		Order order = this.createOrder();
+		Long orderItemId = order.getOrderItems().get(0).getId();
+		em.flush();
+		em.clear();
+
+		OrderItem orderItem = orderItemRepository.findById(orderItemId)
+				.orElseThrow(EntityNotFoundException::new);
+		System.out.println("Order class: "+orderItem.getOrder().getClass());
+		System.out.println("=======================");
+		orderItem.getOrder().getOrderDate();
+		System.out.println("===================");
 	}
 }
