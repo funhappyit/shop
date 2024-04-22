@@ -13,7 +13,8 @@
 -> 파일 업로드 기능<br/>
 3.상세 화면<br/>    
    로그인 화면<br/>
-   ![img_1.png](img_1.png)
+   ![image](https://github.com/funhappyit/shop/assets/74157075/029b57e7-9288-45cd-91b9-344db7dd1604)
+
    회원가입 화면<br/>
    ![img_2.png](img_2.png)
    메인 화면(어드민 계정)<br/>
