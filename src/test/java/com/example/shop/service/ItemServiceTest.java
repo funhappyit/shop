@@ -38,7 +38,7 @@ class ItemServiceTest {
     List<MultipartFile> createMultipartFiles() throws Exception{
         List<MultipartFile> multipartFileList = new ArrayList<>();
         for(int i=0;i<5;i++){
-            String path = "/Users/han-yugyeong/Desktop/shop/item";
+            String path = "C:/test/item";
             String imageName = "image"+i+".jpg";
             MockMultipartFile multipartFile = new MockMultipartFile(path,imageName,"image/jpg",new byte[]{1,2,3,4});
             multipartFileList.add(multipartFile);
