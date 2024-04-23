@@ -32,6 +32,7 @@
    ![img_5.png](img_5.png)
    구매 이력<br/>
    ![img_6.png](img_6.png)
+
    장바구니 담기<br/>
    ![image](https://github.com/funhappyit/shop/assets/74157075/d6eee6ce-3094-425c-8270-678959c4210d)
 
