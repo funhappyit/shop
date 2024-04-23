@@ -36,3 +36,7 @@
    장바구니 담기<br/>
    ![image](https://github.com/funhappyit/shop/assets/74157075/d6eee6ce-3094-425c-8270-678959c4210d)
 
+   장바구니 목록<br/>
+   ![image](https://github.com/funhappyit/shop/assets/74157075/8a57ad8b-f233-4ec4-9a70-92e9c439a7f7)
+
+
