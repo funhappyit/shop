@@ -39,4 +39,7 @@
    장바구니 목록<br/>
    ![image](https://github.com/funhappyit/shop/assets/74157075/8a57ad8b-f233-4ec4-9a70-92e9c439a7f7)
 
+   장바구니 주문 완료<br/>
+   ![image](https://github.com/funhappyit/shop/assets/74157075/80993606-c59f-4843-9601-1a9a07253553)
+
 
